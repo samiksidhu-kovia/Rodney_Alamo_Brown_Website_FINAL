@@ -1,5 +1,5 @@
 window.RODNEY_STORE = Object.freeze({
-  stripePaymentLink: "",
+  paypalPaymentLink: "https://www.paypal.com/paypalme/RodneyAlamoBrown",
   price: 29.99,
   shipping: 5.95,
   currency: "USD",

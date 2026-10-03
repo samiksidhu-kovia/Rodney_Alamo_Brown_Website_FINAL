@@ -3,7 +3,7 @@
   const menuToggle = document.querySelector("#menu-toggle");
   const navigation = document.querySelector("#site-nav");
   const storeDialog = document.querySelector("#store-dialog");
-  const checkoutButton = document.querySelector("#stripe-checkout-button");
+  const checkoutButton = document.querySelector("#paypal-checkout-button");
   const storeStatus = document.querySelector("#store-status");
   const toast = document.querySelector("#toast");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -91,25 +91,25 @@
   });
 
   const storeConfig = window.RODNEY_STORE || {};
-  const stripePaymentLink = String(storeConfig.stripePaymentLink || "").trim();
-  const isStripeLinkReady = /^https:\/\/buy\.stripe\.com\//i.test(stripePaymentLink);
+  const paypalPaymentLink = String(storeConfig.paypalPaymentLink || "").trim();
+  const isPayPalLinkReady = /^https:\/\/(www\.)?paypal\.com\/paypalme\//i.test(paypalPaymentLink);
 
-  if (!isStripeLinkReady) {
+  if (!isPayPalLinkReady) {
     checkoutButton.classList.add("is-pending");
     checkoutButton.setAttribute("aria-disabled", "true");
-    storeStatus.textContent = "Secure Stripe preorder checkout is being connected. Please check back shortly.";
+    storeStatus.textContent = "PayPal preorder payment is being connected. Please check back shortly.";
   }
 
   checkoutButton.addEventListener("click", () => {
-    if (!isStripeLinkReady) {
-      storeStatus.textContent = "Secure Stripe preorder checkout is being connected. Please check back shortly.";
-      showToast("Stripe checkout is not live yet.");
+    if (!isPayPalLinkReady) {
+      storeStatus.textContent = "PayPal preorder payment is being connected. Please check back shortly.";
+      showToast("PayPal payment is not live yet.");
       return;
     }
 
     checkoutButton.disabled = true;
-    checkoutButton.textContent = "Opening secure checkout…";
-    window.location.assign(stripePaymentLink);
+    checkoutButton.textContent = "Opening PayPal…";
+    window.location.assign(paypalPaymentLink);
   });
 
   let toastTimer;
@@ -148,8 +148,4 @@
   document.querySelector("#podcast-share-button")?.addEventListener("click", sharePage);
   document.querySelector("#year").textContent = new Date().getFullYear();
 
-  if (new URLSearchParams(window.location.search).get("order") === "success") {
-    showToast("Thank you. Stripe will email your payment confirmation and receipt.");
-    window.history.replaceState({}, document.title, `${window.location.pathname}${window.location.hash}`);
-  }
 })();

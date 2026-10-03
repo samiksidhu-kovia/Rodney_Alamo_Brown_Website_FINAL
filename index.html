@@ -662,17 +662,33 @@
           </div>
 
           <ul class="store-includes" aria-label="Secure checkout includes">
-            <li>Choose your quantity in secure checkout</li>
-            <li>Shipping address, email, and phone collected by Stripe</li>
-            <li>Tax calculated at checkout when applicable</li>
-            <li>Stripe payment confirmation and receipt</li>
+            <li>Pay directly through Rodney's official PayPal</li>
+            <li>Complete your payment securely through PayPal</li>
+            <li>Secure payment through PayPal</li>
+            <li>Payment confirmation provided by PayPal</li>
           </ul>
 
-          <button class="button button-ink store-checkout" id="stripe-checkout-button" type="button">
-            Preorder securely with Stripe
+          <button class="button button-ink store-checkout" id="paypal-checkout-button" type="button">
+            Continue to PayPal
           </button>
+
+          <div class="paypal-payment-options">
+            <div class="paypal-divider"><span>or scan to pay</span></div>
+
+            <div class="paypal-qr-wrap">
+              <img
+                class="paypal-qr"
+                src="./assets/RodneyPayPalQR.JPG"
+                alt="PayPal QR code for Rodney Alamo Brown"
+                loading="lazy"
+              >
+              <p class="paypal-qr-label">Scan this QR code with your phone to pay through PayPal.</p>
+              <p class="paypal-mobile-note">Already on your phone? Use the PayPal button above.</p>
+            </div>
+          </div>
+
           <p class="store-security">
-            <span aria-hidden="true">◆</span> Card details are entered only on Stripe’s secure checkout page.
+            <span aria-hidden="true">◆</span> Payment is completed securely through PayPal.
           </p>
           <p class="store-status" id="store-status" role="status" aria-live="polite"></p>
 
@@ -682,15 +698,15 @@
               <p>
                 This is a preorder for a physical copy. U.S. shipping is a $5.95 flat rate.
                 Orders are expected to ship after the October 2026 release. Tracking and order
-                updates will be sent to the email provided at checkout when available.
+                order and shipping updates will be provided when available.
               </p>
             </details>
             <details>
               <summary>Payment and order support</summary>
               <p>
-                Stripe securely processes payment and sends the receipt. Final cancellation,
-                refund, damaged-copy, privacy, and seller contact information will be shown in
-                checkout before payment.
+                Payment is completed securely through PayPal. PayPal will provide your payment
+                confirmation. For preorder, shipping, cancellation, refund, or damaged-copy
+                questions, please use the contact information provided on this website.
               </p>
             </details>
           </div>
